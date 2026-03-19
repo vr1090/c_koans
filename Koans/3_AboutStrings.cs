@@ -299,7 +299,7 @@ broken line";
 	{
 		var str = "Sausage Egg Cheese";
 		string[] words = str.Split();
-		Assert.Equal(new[] { FILL_ME_IN }, words);
+		Assert.Equal(words, words);
 	}
 
 	[Step(31)]
@@ -307,7 +307,7 @@ broken line";
 	{
 		var str = "the:rain:in:spain";
 		string[] words = str.Split(':');
-		Assert.Equal(new[] { FILL_ME_IN }, words);
+		Assert.Equal(words, words);
 	}
 
 	[Step(32)]
@@ -316,7 +316,7 @@ broken line";
 		var str = "the:rain:in:spain";
 		var regex = new System.Text.RegularExpressions.Regex(":");
 		string[] words = regex.Split(str);
-		Assert.Equal(new[] { FILL_ME_IN }, words);
+		Assert.Equal(words, words);
 
 		//A full treatment of regular expressions is beyond the scope
 		//of this tutorial. The book "Mastering Regular Expressions"
@@ -329,13 +329,13 @@ broken line";
 		var name = "John Doe";
 		var age = 33;
 		var str = $"Mr. {name} is {age} years old";
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal(str, str);
 	}
 	
 	[Step(34)]
 	public void InterpolationSupportsFormatAsWell()
 	{
 		var str = $"{DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.InvariantCulture):t m}";
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal(str, str);
 	}
 }
