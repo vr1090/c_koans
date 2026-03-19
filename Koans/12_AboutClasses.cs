@@ -25,7 +25,7 @@ public class AboutClasses : Koan
 		// A type that is defined as a class is a reference type.
 		// when you declare a variable of a reference type, the variable
 		// contains the value null until you explicitly create an instance
-		object foo = null;
+		object foo = new AboutClasses.Foo1();
 		Assert.NotNull(foo);
 	}
 
@@ -40,9 +40,18 @@ public class AboutClasses : Koan
 	[Step(2)]
 	public void InstanceMembersCanBeSetByAssigningToThem()
 	{
-		// Try to assign visible class members
-		var foo = new Foo2();
-		Assert.Equal(1, foo.Int);
+        // Try to assign visible class members
+        var foo = new Foo2
+        {
+            Int = 1,
+            _str = "Bar"
+        };
+
+		var koplak = new
+		{
+			anjing = "babi"
+		};
+        Assert.Equal(1, foo.Int);
 		Assert.Equal("Bar", foo._str);
 	}
 
@@ -55,7 +64,7 @@ public class AboutClasses : Koan
 		{
 			if (_boom)
 			{
-				throw new InvalidOperationException(nameof(Do));
+			
 			}
 		}
 	}
@@ -77,7 +86,7 @@ public class AboutClasses : Koan
 	[Step(4)]
 	public void UseConstructorsToDefineInitialValues()
 	{
-		Foo4 foo = default(Foo4);
+		Foo4 foo = new Foo4("Bar");
 		Assert.Equal("Bar", foo.Bar);
 	}
 
@@ -85,7 +94,7 @@ public class AboutClasses : Koan
 	public void DifferentObjectsHasDifferentInstanceVariables()
 	{
 		Foo4 foo1 = new Foo4();
-		Foo4 foo2 = new Foo4();
+		Foo4 foo2 = new Foo4("kutu");
 		Assert.NotEqual(foo1.Bar, foo2.Bar);
 	}
 
@@ -94,16 +103,15 @@ public class AboutClasses : Koan
 		public int Val { get; }
 		public Foo5(int val = 0) => Val = val;
 		public Foo5 Self() =>
-			throw new InvalidOperationException(nameof(Self));
-
+			this;
 		public override string ToString()
 		{
-			return base.ToString();
+			return "Foo5";
 		}
 
 		public override bool Equals(object obj)
 		{
-			return base.Equals(obj);
+			return obj is Foo5 other && other.Val == this.Val;
 		}
 
 		public override int GetHashCode()
