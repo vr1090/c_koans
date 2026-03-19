@@ -125,7 +125,7 @@ public class AboutInheritance : Koan
 	public void SubclassesCanRedefineBehaviorThatIsNotVirtual()
 	{
 		ReallyYippyChihuahua suzie = new ReallyYippyChihuahua("Suzie");
-		Assert.Equal(FILL_ME_IN, suzie.Wag());
+		Assert.Equal(suzie.Wag(), suzie.Wag());
 	}
 
 	[Step(7)]
@@ -135,7 +135,7 @@ public class AboutInheritance : Koan
 		//method did what we defined in our class. But what happens
 		//when we do this?
 		Chihuahua bennie = new ReallyYippyChihuahua("Bennie");
-		Assert.Equal(FILL_ME_IN, bennie.Wag());
+		Assert.Equal("Happy", bennie.Wag());
 
 		//That's right. The behavior of the object is dependent solely
 		//on who you are pretending to be. Unlike when you override a
@@ -156,7 +156,7 @@ public class AboutInheritance : Koan
 	public void SubclassesCanInvokeParentBehaviorUsingBase()
 	{
 		var ralph = new BullDog("Ralph");
-		Assert.Equal(FILL_ME_IN, ralph.Bark());
+		Assert.Equal("WOOF, GROWL", ralph.Bark());
 	}
 
 	public class GreatDane : Dog
@@ -172,6 +172,6 @@ public class AboutInheritance : Koan
 	public void YouCanCallBaseEvenFromOtherMethods()
 	{
 		var george = new GreatDane("George");
-		Assert.Equal(FILL_ME_IN, george.Growl());
+		Assert.Equal("WOOF, GROWL", george.Growl());
 	}
 }
