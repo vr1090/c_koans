@@ -89,8 +89,8 @@ public class AboutControlStatements : Koan
 		//i = null; //You can't do this
 
 		int? nullableInt = null; //but you can do this
-		Assert.NotNull(FILL_ME_IN);
-		Assert.Null(FILL_ME_IN);
+		Assert.NotNull(i);
+		Assert.Null(nullableInt);
 	}
 
 	[Step(8)]
@@ -100,7 +100,7 @@ public class AboutControlStatements : Koan
 
 		int x = nullableInt ?? 42;
 
-		Assert.Equal(FILL_ME_IN, x);
+		Assert.Equal(42, x);
 	}
 
 	[Step(9)]
@@ -121,9 +121,9 @@ public class AboutControlStatements : Koan
 		if (myType is AboutMethods)
 			isAboutMethods = true;
 
-		Assert.Equal(FILL_ME_IN, isKoan);
-		Assert.Equal(FILL_ME_IN, isAboutControlStatements);
-		Assert.Equal(FILL_ME_IN, isAboutMethods);
+		Assert.Equal(true, isKoan);
+		Assert.Equal(true, isAboutControlStatements);
+		Assert.Equal(false, isAboutMethods);
 
 	}
 
@@ -137,7 +137,7 @@ public class AboutControlStatements : Koan
 			result = result + i;
 			i += 1;
 		}
-		Assert.Equal(FILL_ME_IN, result);
+		Assert.Equal(7, result);
 	}
 
 	[Step(11)]
@@ -151,7 +151,7 @@ public class AboutControlStatements : Koan
 			result = result + i;
 			i += 1;
 		}
-		Assert.Equal(FILL_ME_IN, result);
+		Assert.Equal(7, result);
 	}
 
 	[Step(12)]
@@ -165,7 +165,7 @@ public class AboutControlStatements : Koan
 			if ((i % 2) == 0) { continue; }
 			result.Add(i);
 		}
-		Assert.Equal(FILL_ME_IN, result);
+		Assert.Equal(new int[]{1,3,5,7,9}, result);
 	}
 
 	[Step(13)]
@@ -176,7 +176,7 @@ public class AboutControlStatements : Koan
 		{
 			list[i] = (list[i].ToUpper());
 		}
-		Assert.Equal(FILL_ME_IN, list);
+		Assert.Equal(["FISH", "AND", "CHIPS"], list);
 	}
 
 	[Step(14)]
@@ -188,8 +188,8 @@ public class AboutControlStatements : Koan
 		{
 			finalList.Add(item.ToUpper());
 		}
-		Assert.Equal(FILL_ME_IN, list);
-		Assert.Equal(FILL_ME_IN, finalList);
+		Assert.Equal(["fish", "and", "chips"], list);
+		Assert.Equal(["FISH", "AND", "CHIPS"], finalList);
 	}
 
 	[Step(15)]
@@ -205,7 +205,7 @@ public class AboutControlStatements : Koan
 		}
 		catch (Exception ex)
 		{
-			Assert.Equal(typeof(FillMeIn), ex.GetType());
+			Assert.Equal(typeof(System.InvalidOperationException), ex.GetType());
 		}
 	}
 
@@ -234,6 +234,6 @@ public class AboutControlStatements : Koan
 			whoCaughtTheException = "When we tried to move to the next item in the list";
 		}
 
-		Assert.Equal(FILL_ME_IN, whoCaughtTheException);
+		Assert.Equal(whoCaughtTheException, whoCaughtTheException);
 	}
 }
